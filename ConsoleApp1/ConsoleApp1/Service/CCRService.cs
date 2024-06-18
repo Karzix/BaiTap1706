@@ -12,10 +12,10 @@ namespace ConsoleApp1.Service
     {
         private GenericRepository<CCR> repository = new GenericRepository<CCR>();
 
-        public void Add(string line, ref Guid CrHeaderId)
+        public void Add(string line, ref Guid CrHeaderId, ref List<CCR> CCRs)
         {
             var element = line.Split(new char[] { ',' }).ToList();
-            var newVEHICLE = new CCR
+            var newCCR = new CCR
             {
                 Complaint = element[1],
                 Cause = element[2],
@@ -23,8 +23,8 @@ namespace ConsoleApp1.Service
                 HeaderId = CrHeaderId,
                 Id = Guid.NewGuid(),
             };
-            repository.Create(newVEHICLE);
-
+            //repository.Create(newVEHICLE);
+            CCRs.Add(newCCR);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace ConsoleApp1.Service
     {
         private GenericRepository<MISC> repository = new GenericRepository<MISC>();
 
-        public void Add(string line, ref Guid CrHeaderId)
+        public void Add(string line, ref Guid CrHeaderId, ref List<MISC> MISCs)
         {
             var element = line.Split(new char[] { ',' }).ToList();
             var newVEHICLE = new MISC
@@ -27,7 +27,8 @@ namespace ConsoleApp1.Service
                 HeaderId = CrHeaderId,
                 Id = Guid.NewGuid(),
             };
-            repository.Create(newVEHICLE);
+            //repository.Create(newVEHICLE);
+            MISCs.Add(newVEHICLE);
 
         }
     }

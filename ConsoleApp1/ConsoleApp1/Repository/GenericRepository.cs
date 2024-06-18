@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp1.data;
+using EFCore.BulkExtensions;
 
 namespace ConsoleApp1.Repository
 {
@@ -42,6 +43,11 @@ namespace ConsoleApp1.Repository
                 _context.Update(entity);
                 _context.SaveChanges();
             }
+        }
+
+        public void BulkInsert(List<TEntity> entities) 
+        { 
+           _context.BulkInsert(entities, new BulkConfig { BatchSize = 200 } );
         }
     }
 }

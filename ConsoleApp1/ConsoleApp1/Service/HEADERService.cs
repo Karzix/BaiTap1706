@@ -13,7 +13,7 @@ namespace ConsoleApp1.Service
         private GenericRepository<HEADER> repository = new GenericRepository<HEADER>();
 
 
-        public void Add(string line, ref Guid identID, ref Guid CrHeaderId)
+        public void Add(string line, ref Guid identID, ref Guid CrHeaderId, ref List<HEADER> listHeader)
         {
             var element = line.Split(new char[] { ',' }).ToList();
             var newHEADER = new HEADER();
@@ -30,8 +30,8 @@ namespace ConsoleApp1.Service
             newHEADER.InvoiceOrCredit = element[10];
             newHEADER.Id = Guid.NewGuid();
             newHEADER.RecordIdentifier = element[0];
-            repository.Create(newHEADER);
-
+            //repository.Create(newHEADER);
+            listHeader.Add(newHEADER);
 
             CrHeaderId = newHEADER.Id;
         }

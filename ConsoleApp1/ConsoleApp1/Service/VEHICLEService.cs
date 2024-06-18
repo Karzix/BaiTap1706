@@ -12,7 +12,7 @@ namespace ConsoleApp1.Service
     {
         private GenericRepository<VEHICLE> repository = new GenericRepository<VEHICLE>();
 
-        public void Add(string line,ref Guid CrHeaderId)
+        public void Add(string line,ref Guid CrHeaderId, ref List<VEHICLE> VEHICLEs)
         {
             var element = line.Split(new char[] { ',' }).ToList();
             var newVEHICLE = new VEHICLE
@@ -26,7 +26,7 @@ namespace ConsoleApp1.Service
                 HeaderId = CrHeaderId,
                 Id = Guid.NewGuid(),
             };
-            repository.Create(newVEHICLE);
+            //repository.Create(newVEHICLE);
 
         }
     }
